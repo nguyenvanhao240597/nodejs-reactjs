@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Content from './Content';
 
 //------------------------------------------------------------------------------
 
@@ -134,24 +135,34 @@ const handleSubmitAdd = () => {
   })
   setjob('')
 }
-
+//------------------------------------------------------------------------------
+const [show, setShow] = useState(false);
 
 
 //------------------------------------------------------------------------------
 
   return (
     <div className="App">
-      <h1>++</h1>
-      <h1>{counter}</h1>
-      <button onClick={handleIncrease}>Increase</button> <br/>
-      <h1>Update</h1>
-      <h1>{JSON.stringify(info)}</h1>
-      <button onClick={handleUpdate}>Update</button><br/>
+      <div style={{padding:32}}>
+        <button onClick={()=>setShow(!show)}>Toggle</button>    
+        {show && <Content/>}
+      </div>
 
-      <h1>Gift</h1>
-      <h1>{gift||'Chua co thuong'}</h1>
-      <button onClick={handleGift}>Lay thuong</button> <br />
 
+
+
+      <div style={{padding:32}}>
+        <h1>++</h1>
+        <h1>{counter}</h1>
+        <button onClick={handleIncrease}>Increase</button> <br/>
+        <h1>Update</h1>
+        <h1>{JSON.stringify(info)}</h1>
+        <button onClick={handleUpdate}>Update</button><br/>
+
+        <h1>Gift</h1>
+        <h1>{gift||'Chua co thuong'}</h1>
+        <button onClick={handleGift}>Lay thuong</button> <br />
+      </div>
 
       <div style={{padding:32}}>
         <h1>Ví dụ textBox</h1>
@@ -221,18 +232,12 @@ const handleSubmitAdd = () => {
             jobs.map((job, index) => (
               <li key={index}>{job}</li>
           ))}
-        </ul>
-          
-       
+        </ul>    
       </div>
-
-
-
-
-
-
-
+    
     </div>
+
+    
   );
 }
 
